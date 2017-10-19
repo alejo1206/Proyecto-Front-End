@@ -1,0 +1,6 @@
+[{"idTurno":"1", "horaInicio":"08:00:00", "horaFin":"12:00:00"},
+ {"idTurno":"2", "horaInicio":"12:00:00", "horaFin":"16:00:00"},
+ {"idTurno":"5", "horaInicio":"16:00:00", "horaFin":"20:00:00"},
+ {"idTurno":"6", "horaInicio":"00:00:00", "horaFin":"04:00:00"},
+ {"idTurno":"7", "horaInicio":"04:00:00", "horaFin":"08:00:00"},
+ {"idTurno":"8", "horaInicio":"20:00:00", "horaFin":"23:59:00"}]

@@ -1,0 +1,4 @@
+[{"idRestriccion":"1", "nombreRestriccion":"Cel\u00edaco", "descripcionRestriccion":"Apto para personas con celiaqu\u00eda"},
+ {"idRestriccion":"2", "nombreRestriccion":"Vegetariano", "descripcionRestriccion":"Apto para vegetarianos (no para veganos)"},
+ {"idRestriccion":"3", "nombreRestriccion":"Hipertensos", "descripcionRestriccion":"Bajo en sodio, apto para hipertensos"},
+ {"idRestriccion":"4", "nombreRestriccion":"Sin alcohol", "descripcionRestriccion":"Bebida sin alcohol"}]
