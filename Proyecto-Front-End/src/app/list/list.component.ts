@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Http } from '@angular/http';
 
 @Component({
   selector: 'app-list',
@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ListComponent implements OnInit {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: Http) { }
   headers: string[] = [];
   rows: string[][] = [];
   private data = [{"idArticulo":"1", "nombreArticulo":"Hamburguesa", "descripcionArticulo":"Hamburguesa completa con jam\u00f3n, queso y huevo", "precioArticulo":"30", "tipoArticulo":"Plato", "calorias":"150", "tiempoPreparacion":"10", "imagen":"2017-09-20 12_09_21Hamburguesa.jpg", "fechaBajaArticulo":"", "cantVecesPedido":"7", "idRestriccion":"", "nombreRestriccion":"", "descripcionRestriccion":"", "idCalificacionArticulo":"4", "calificacionArticulo":"Regular", "comentarioArticulo":"Mejorable", "fechaCalificacionArticulo":"2017-09-01"},
