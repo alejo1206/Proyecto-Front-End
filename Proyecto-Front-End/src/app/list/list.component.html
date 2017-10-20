@@ -1,12 +1,14 @@
-<div class="container" id="lista">
+<div class="container" id="lista" *ngFor="let art of data">
     <table class="table table-sm table-striped table-bordered table-hover">
-    <tr>
-        <td>asd</td>
-        <td>asd</td>
-    </tr>
-    <tr>
-        <td>asd</td>
-        <td>asd</td>
-    </tr>
+    <thead>
+        <tr>
+            <th>{{art.idArticulo}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td></td>
+        </tr>
+    </tbody>
     </table>
 </div>
