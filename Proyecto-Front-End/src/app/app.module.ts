@@ -6,7 +6,6 @@ import {HttpModule} from "@angular/http";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { SideBarComponent } from './side-bar/side-bar.component';
 import { MainComponent } from './main/main.component';
 import { FooterComponent } from './footer/footer.component';
 import { ErrorComponent } from './error/error.component';
@@ -17,7 +16,6 @@ import { ListComponent } from './list/list.component';
   declarations: [
     AppComponent,
     NavBarComponent,
-    SideBarComponent,
     MainComponent,
     FooterComponent,
     ErrorComponent,
