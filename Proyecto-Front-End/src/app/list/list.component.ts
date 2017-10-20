@@ -9,7 +9,8 @@ import { HttpClient } from '@angular/common/http';
 export class ListComponent implements OnInit {
 
   constructor(private http: HttpClient) { }
-
+  headers: string[] = [];
+  rows: string[][] = [];
   private data = [{"idArticulo":"1", "nombreArticulo":"Hamburguesa", "descripcionArticulo":"Hamburguesa completa con jam\u00f3n, queso y huevo", "precioArticulo":"30", "tipoArticulo":"Plato", "calorias":"150", "tiempoPreparacion":"10", "imagen":"2017-09-20 12_09_21Hamburguesa.jpg", "fechaBajaArticulo":"", "cantVecesPedido":"7", "idRestriccion":"", "nombreRestriccion":"", "descripcionRestriccion":"", "idCalificacionArticulo":"4", "calificacionArticulo":"Regular", "comentarioArticulo":"Mejorable", "fechaCalificacionArticulo":"2017-09-01"},
   {"idArticulo":"1", "nombreArticulo":"Hamburguesa", "descripcionArticulo":"Hamburguesa completa con jam\u00f3n, queso y huevo", "precioArticulo":"30", "tipoArticulo":"Plato", "calorias":"150", "tiempoPreparacion":"10", "imagen":"2017-09-20 12_09_21Hamburguesa.jpg", "fechaBajaArticulo":"", "cantVecesPedido":"7", "idRestriccion":"", "nombreRestriccion":"", "descripcionRestriccion":"", "idCalificacionArticulo":"1", "calificacionArticulo":"Bueno", "comentarioArticulo":"Todo ok", "fechaCalificacionArticulo":"2017-09-01"},
   {"idArticulo":"1", "nombreArticulo":"Hamburguesa", "descripcionArticulo":"Hamburguesa completa con jam\u00f3n, queso y huevo", "precioArticulo":"30", "tipoArticulo":"Plato", "calorias":"150", "tiempoPreparacion":"10", "imagen":"2017-09-20 12_09_21Hamburguesa.jpg", "fechaBajaArticulo":"", "cantVecesPedido":"7", "idRestriccion":"", "nombreRestriccion":"", "descripcionRestriccion":"", "idCalificacionArticulo":"6", "calificacionArticulo":"Bueno", "comentarioArticulo":"", "fechaCalificacionArticulo":"2017-09-19"},
@@ -22,33 +23,18 @@ export class ListComponent implements OnInit {
   {"idArticulo":"5", "nombreArticulo":"Manaos Pomelo 3l", "descripcionArticulo":"Botella de gaseosa marca Manaos, sabor pomelo blanco, de 3 litros", "precioArticulo":"30", "tipoArticulo":"Bebida", "calorias":"300", "tiempoPreparacion":"0", "imagen":"2017-09-19 16_55_18manaos.png", "fechaBajaArticulo":"", "cantVecesPedido":"8", "idRestriccion":"4", "nombreRestriccion":"Sin alcohol", "descripcionRestriccion":"Bebida sin alcohol", "idCalificacionArticulo":"3", "calificacionArticulo":"Bueno", "comentarioArticulo":"Excelente producto", "fechaCalificacionArticulo":"2017-08-31"},
   {"idArticulo":"", "nombreArticulo":"Vino Santa Julia Blanco 750 ml.", "descripcionArticulo":"Vino Santa Julia, blanco, en botella de vidrio de 750 ml.", "precioArticulo":"74.99", "tipoArticulo":"Bebida", "calorias":"250", "tiempoPreparacion":"0", "imagen":"2017-09-20 12_09_57Santa Julia Blanco 750ml.png", "fechaBajaArticulo":"", "cantVecesPedido":"15", "idRestriccion":"", "nombreRestriccion":"", "descripcionRestriccion":"", "idCalificacionArticulo":"", "calificacionArticulo":"", "comentarioArticulo":"", "fechaCalificacionArticulo":""},
   {"idArticulo":"", "nombreArticulo":"Ensalada Mixta", "descripcionArticulo":"Ensalada de lechuga, tomate y cebolla", "precioArticulo":"12", "tipoArticulo":"Plato", "calorias":"25", "tiempoPreparacion":"2", "imagen":"2017-09-20 12_09_10Ensalada mixta.jpg", "fechaBajaArticulo":"", "cantVecesPedido":"0", "idRestriccion":"", "nombreRestriccion":"", "descripcionRestriccion":"", "idCalificacionArticulo":"", "calificacionArticulo":"", "comentarioArticulo":"", "fechaCalificacionArticulo":""}];
-
+  
   ngOnInit() {
-    console.log(this.data[0]);;
-   /* var url: string[] = document.location.toString().split("/");
-    var archivo = "~JSON/" + url[url.length - 1] + ".json";
-    console.log(archivo);
-    var input = require(archivo);*/
-
-    /*
-    function convert(data: typeof input) {
-      
-        let rows = "<tr>";
-        for (var key in data[0]) {
-          rows += "<th>" + key + "</th>";
-        }
-        rows += "</tr></thead><tbody>"
-        for(var i = 0; i <= 12; i++){
-          rows += "<tr>";
-          for (var key in data[i]) {
-            rows += "<td>" + data[i][key] + "</td>";
-          }
-          rows += "</tr>";
-        }
-        rows += "</tbody></table>";
-        document.getElementById("lista").innerHTML = "<table class=\"table table-sm col-sm-8 table-bordered table-striped table-hover\"><thead>" + rows;
+    
+    for (var key in this.data[0]) {
+      this.headers.push(key);
     }
-    */
-}
-
+    for(var i = 0; i <= this.data.length - 1; i++){
+      let row: string[] = [];
+      for (var key in this.data[i]) {
+        row.push(this.data[i][key]);
+      }
+      this.rows.push(row);
+    }
+  }
 }

@@ -1,13 +1,13 @@
-<div class="container" id="lista" *ngFor="let art of data">
+<div class="container" id="lista">
     <table class="table table-sm table-striped table-bordered table-hover">
     <thead>
         <tr>
-            <th>{{art.idArticulo}}</th>
+            <th *ngFor="let head of headers">{{head}}</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td></td>
+        <tr *ngFor="let row of rows">
+            <td *ngFor="let r of row">{{r}}</td>
         </tr>
     </tbody>
     </table>
