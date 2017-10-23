@@ -18,12 +18,16 @@ export class ListComponent implements OnInit {
     this.http.get("/JSON/" + url[url.length - 1] + ".json").subscribe(resp =>{
       this.data = resp.json();
       for (var key in this.data[0]) {
-        this.headers.push(key);
+        if(key !== "Imagen" && key !== "Descripción Restricción" && key !== "Habilitado"){
+          this.headers.push(key);
+        }
       }
       for(var i = 0; i <= this.data.length - 1; i++){
         let row: string[] = [];
         for (var key in this.data[i]) {
-          row.push(this.data[i][key]);
+          if(key !== "Imagen" && key !== "Descripción Restricción" && key !== "Habilitado"){
+            this.data[i][key] === "" ? row.push("-") : row.push(this.data[i][key]);
+          }
         }
         this.rows.push(row);
       }

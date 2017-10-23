@@ -1,5 +1,5 @@
-[{"idRepartidor":"1", "nombreRepartidor":"Juan", "apellidoRepartidor":"Perez", "telefono":"15535630", "dniRepartidor":"12345678", "fechaBajaRepartidor":"", "cantRepartosTotal":"1", "cantRepartosHoy":"0"},
- {"idRepartidor":"2", "nombreRepartidor":"Roberto", "apellidoRepartidor":"Carlos", "telefono":"15595567", "dniRepartidor":"30156243", "fechaBajaRepartidor":"", "cantRepartosTotal":"2", "cantRepartosHoy":"0"},
- {"idRepartidor":"3", "nombreRepartidor":"Marcelo", "apellidoRepartidor":"Fern\u00e1ndez", "telefono":"15308127", "dniRepartidor":"32456789", "fechaBajaRepartidor":"", "cantRepartosTotal":"1", "cantRepartosHoy":"0"},
- {"idRepartidor":"4", "nombreRepartidor":"Javier", "apellidoRepartidor":"Mascherano", "telefono":"15602374", "dniRepartidor":"25478963", "fechaBajaRepartidor":"", "cantRepartosTotal":"0", "cantRepartosHoy":"0"},
- {"idRepartidor":"5", "nombreRepartidor":"Gonzalo", "apellidoRepartidor":"Higuain", "telefono":"15203487", "dniRepartidor":"19206345", "fechaBajaRepartidor":"", "cantRepartosTotal":"1", "cantRepartosHoy":"0"}]
+[{"Nombre":"Juan", "Apellido":"Perez", "Teléfono":"15535630", "DNI":"12345678", "Cantidad Repartos":"1"},
+ {"Nombre":"Roberto", "Apellido":"Carlos", "Teléfono":"15595567", "DNI":"30156243", "Cantidad Repartos":"2"},
+ {"Nombre":"Marcelo", "Apellido":"Fern\u00e1ndez", "Teléfono":"15308127", "DNI":"32456789", "Cantidad Repartos":"1"},
+ {"Nombre":"Javier", "Apellido":"Mascherano", "Teléfono":"15602374", "DNI":"25478963", "Cantidad Repartos":"0"},
+ {"Nombre":"Gonzalo", "Apellido":"Higuain", "Teléfono":"15203487", "DNI":"19206345", "Cantidad Repartos":"1"}]
