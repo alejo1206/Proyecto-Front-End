@@ -46,5 +46,5 @@ export class ListComponent implements OnInit {
 
 class Header{
   value: string;
-  type: string
+  type: string;
 }
