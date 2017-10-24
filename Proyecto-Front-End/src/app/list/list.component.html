@@ -2,12 +2,26 @@
     <table class="table table-sm table-striped table-bordered table-hover">
     <thead>
         <tr>
-            <th *ngFor="let head of headers">{{head}}</th>
+            <th *ngFor="let head of headers">{{head.value}}</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let row of rows">
-            <td *ngFor="let r of row">{{r}}</td>
+            <td *ngFor="let r of row; let i = index">
+                <span *ngIf="headers[i].type === 'currency'">{{r | currPipe}}</span>
+                <span *ngIf="headers[i].type === 'text' || r === '-'">{{r}}</span>
+                <span *ngIf="headers[i].type === 'list' && r !== '-'">
+                    <ul>
+                        <li *ngFor="let val of r">{{val}}</li>
+                    </ul>
+                </span>
+            </td>
+            <td>
+                <a href="#" class="btn btn-info">Editar</a>
+            </td>
+            <td>
+                <a href="#" class="btn btn-danger">Borrar</a>
+            </td>
         </tr>
     </tbody>
     </table>

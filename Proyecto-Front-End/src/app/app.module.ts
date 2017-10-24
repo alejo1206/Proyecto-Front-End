@@ -12,6 +12,7 @@ import { ErrorComponent } from './error/error.component';
 import { HeaderComponent } from './header/header.component';
 import { ListComponent } from './list/list.component';
 import { FormComponent } from './form/form.component';
+import { CurrPipe } from './curr.pipe';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { FormComponent } from './form/form.component';
     ErrorComponent,
     HeaderComponent,
     ListComponent,
-    FormComponent
+    FormComponent,
+    CurrPipe
   ],
   imports: [
     BrowserModule,

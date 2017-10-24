@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Http } from '@angular/http';
 
 @Component({
@@ -6,10 +6,11 @@ import { Http } from '@angular/http';
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
+
 export class ListComponent implements OnInit {
 
   constructor(private http: Http) { }
-  headers: string[] = [];
+  headers: Header[] = [];
   rows: string[][] = [];
   private data = [];
   
@@ -19,7 +20,15 @@ export class ListComponent implements OnInit {
       this.data = resp.json();
       for (var key in this.data[0]) {
         if(key !== "Imagen" && key !== "Descripción Restricción" && key !== "Habilitado"){
-          this.headers.push(key);
+          let header = new Header();
+          header.value = key;
+          switch(key){
+            case "Precio": header.type = "currency"; break;
+            case "Restricciones":
+            case "Descripción Restricción": header.type = "list"; break;
+            default: header.type = "text"; break;
+          }
+          this.headers.push(header);
         }
       }
       for(var i = 0; i <= this.data.length - 1; i++){
@@ -33,4 +42,9 @@ export class ListComponent implements OnInit {
       }
     });
   }
+}
+
+class Header{
+  value: string;
+  type: string
 }
