@@ -1,22 +1,46 @@
-<div class="container-fluid">
-    <fieldset id="fieldset">
-        <span *ngFor="let input of inputs">
-            <label>{{input.label}}</label>
-            <input type="text" *ngIf="input.type === 'text'">
-            <input type="email" *ngIf="input.type === 'email'">
-            <input type="datetime-local" *ngIf="input.type === 'datetime'">
-            <input type="date" *ngIf="input.type === 'date'">
-            <input type="time" *ngIf="input.type === 'time'">
-            <input type="number" *ngIf="input.type === 'number'">
-            <span *ngIf="input.type === 'list'">
-                <br>
-                <span *ngFor="let val of input.value">
-                    <input type="checkbox" [checked]="val.checked">{{val.value}}
-                    <br>
-                </span>
+<br>
+<div class="container-fluid col-md-10">
+    <div class="form-group">
+        <fieldset id="fieldset">
+            <span *ngFor="let input of inputs">
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label" [for]="input.label">{{input.label}}:</label>
+                    <div class="col-md-6">
+                        <input class="form-control" type="text" [value]="input.value" [id]="input.label" *ngIf="input.type === 'text'">
+                        <input class="form-control" type="email" [value]="input.value" [id]="input.label" *ngIf="input.type === 'email'">
+                        <input class="form-control" type="datetime-local" [value]="input.value" [id]="input.label" *ngIf="input.type === 'datetime'">
+                        <input class="form-control" type="date" [value]="input.value" [id]="input.label" *ngIf="input.type === 'date'">
+                        <input class="form-control" type="time" [value]="input.value" [id]="input.label" *ngIf="input.type === 'time'">
+                        <input class="form-control" type="number" [value]="input.value" [id]="input.label" *ngIf="input.type === 'number'">
+                        <span *ngIf="input.type === 'list'">
+                            <div class="form-check">
+                                <span *ngFor="let val of input.value">
+                                    <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox" [checked]="val.checked">{{val.value}}
+                                    </label>
+                                    <br>
+                                </span>
+                            </div>
+                        </span>
+                        <span *ngIf="input.type === 'enum' && input.label === 'Puesto'">
+                            <select class="form-control" [id]="input.label">
+                                <option value="Mozo" [selected]="input.value === 'Mozo'">Mozo</option>
+                                <option value="Cocinero" [selected]="input.value === 'Cocinero'">Cocinero</option>
+                                <option value="Encargado" [selected]="input.value === 'Encargado'">Encargado</option>
+                            </select>
+                        </span>
+                        <span *ngIf="input.type === 'enum' && input.label === 'Rol'">
+                            <select class="form-control" [id]="input.label">
+                                <option value="Admin" [selected]="input.value === 'Admin'">Admin</option>
+                                <option value="Cliente" [selected]="input.value === 'Cliente'">Cliente</option>
+                                <option value="Empleado" [selected]="input.value === 'Empleado'">Empleado</option>
+                            </select>
+                        </span>
+                        <br>
+                    </div>
+                </div>
             </span>
-            <br>
-        </span>
-    </fieldset>
+        </fieldset>
+    </div>
 </div>
      

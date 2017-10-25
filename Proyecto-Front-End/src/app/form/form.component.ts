@@ -34,31 +34,9 @@ export class FormComponent implements OnInit {
         for (var key in this.entidad) {
           if(key !== "id"){
             let input = new Input();
-            input.label = key + ":";
-            input.value = this.entidad[key];
-            switch(key){
-              case "Nombre":
-              case "Descripción":
-              case "Apellido":
-              case "Puesto":
-              case "Usuario":
-              case "Contraseña": input.type = "text"; break;
-              case "Precio":
-              case "Calorías":
-              case "Tiempo Preparación":
-              case "DNI":
-              case "Código de Seguridad": input.type = "number"; break;
-              case "Email": input.type = "email"; break;
-              case "Restricciones": input.type = "list"; break;
-              case "Entrada":
-              case "Salida": input.type = "datetime"; break;
-              case "Hora Inicio":
-              case "Hora Fin": input.type = "time"; break;
-              case "Fecha Baja": input.type = "date"; break;
-              case "Puesto":
-              case "Rol": input.type = "enum"; break;
-              default: input.type = "text";
-            }
+            input.label = key;
+            accion === "crear"? input.value = "" : input.value = this.entidad[key];
+            input.type = this.setType(key);
             this.inputs.push(input);
           }
         }
@@ -82,22 +60,34 @@ export class FormComponent implements OnInit {
     }
   }
 
+  setType(key: string): string{
+    switch(key){
+      case "Nombre":
+      case "Descripción":
+      case "Apellido":
+      case "Usuario":
+      case "Contraseña": return "text";
+      case "Precio":
+      case "Calorías":
+      case "Tiempo Preparación":
+      case "DNI":
+      case "Código de Seguridad": return "number";
+      case "Email": return "email";
+      case "Restricciones": return "list";
+      case "Entrada":
+      case "Salida": return "datetime";
+      case "Hora Inicio":
+      case "Hora Fin": return "time";
+      case "Fecha Baja": return "date";
+      case "Puesto": 
+      case "Rol": return "enum";
+      default: return "text";
+    }
+  }
 }
 
 class Input{
   label: string;
   value: string;
   type: string;
-}
-
-enum Puestos{
-  Mozo,
-  Encargado,
-  Cocinero
-}
-
-enum Roles{
-  Admin,
-  Cliente,
-  Empleado
 }
