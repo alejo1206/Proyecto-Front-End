@@ -16,7 +16,8 @@ export class ListComponent implements OnInit {
   
   ngOnInit() {
     let url = document.location.href.split("/");
-    this.http.get("/JSON/" + url[url.length - 1] + ".json").subscribe(resp =>{
+    var clase = url[url.length - 1];
+    this.http.get("/JSON/" + clase + ".json").subscribe(resp =>{
       this.data = resp.json();
       for (var key in this.data[0]) {
         if(key !== "Habilitado"){
