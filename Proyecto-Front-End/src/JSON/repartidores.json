@@ -1,5 +1,5 @@
-[{"Nombre":"Juan", "Apellido":"Perez", "Teléfono":"15535630", "DNI":"12345678", "Cantidad Repartos":"1"},
- {"Nombre":"Roberto", "Apellido":"Carlos", "Teléfono":"15595567", "DNI":"30156243", "Cantidad Repartos":"2"},
- {"Nombre":"Marcelo", "Apellido":"Fern\u00e1ndez", "Teléfono":"15308127", "DNI":"32456789", "Cantidad Repartos":"1"},
- {"Nombre":"Javier", "Apellido":"Mascherano", "Teléfono":"15602374", "DNI":"25478963", "Cantidad Repartos":"0"},
- {"Nombre":"Gonzalo", "Apellido":"Higuain", "Teléfono":"15203487", "DNI":"19206345", "Cantidad Repartos":"1"}]
+[{"Nombre":"Juan", "Apellido":"Perez", "Teléfono":"15535630", "DNI":"12345678"},
+ {"Nombre":"Roberto", "Apellido":"Carlos", "Teléfono":"15595567", "DNI":"30156243"},
+ {"Nombre":"Marcelo", "Apellido":"Fern\u00e1ndez", "Teléfono":"15308127", "DNI":"32456789"},
+ {"Nombre":"Javier", "Apellido":"Mascherano", "Teléfono":"15602374", "DNI":"25478963"},
+ {"Nombre":"Gonzalo", "Apellido":"Higuain", "Teléfono":"15203487", "DNI":"19206345"}]

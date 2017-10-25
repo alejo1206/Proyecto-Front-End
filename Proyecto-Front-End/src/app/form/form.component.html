@@ -1,2 +1,22 @@
-<!-- TODO: hacer formulario dinamico dependiendo la clase. para hacerlo tengo que armar una lista de inputs
-     y despues validar que clase es, para agregar los inputs que haga falta al form -->
+<div class="container-fluid">
+    <fieldset id="fieldset">
+        <span *ngFor="let input of inputs">
+            <label>{{input.label}}</label>
+            <input type="text" *ngIf="input.type === 'text'">
+            <input type="email" *ngIf="input.type === 'email'">
+            <input type="datetime-local" *ngIf="input.type === 'datetime'">
+            <input type="date" *ngIf="input.type === 'date'">
+            <input type="time" *ngIf="input.type === 'time'">
+            <input type="number" *ngIf="input.type === 'number'">
+            <span *ngIf="input.type === 'list'">
+                <br>
+                <span *ngFor="let val of input.value">
+                    <input type="checkbox" [checked]="val.checked">{{val.value}}
+                    <br>
+                </span>
+            </span>
+            <br>
+        </span>
+    </fieldset>
+</div>
+     
