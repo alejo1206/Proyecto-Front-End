@@ -13,6 +13,7 @@ import { HeaderComponent } from './header/header.component';
 import { ListComponent } from './list/list.component';
 import { FormComponent } from './form/form.component';
 import { CurrPipe } from './curr.pipe';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { CurrPipe } from './curr.pipe';
     HeaderComponent,
     ListComponent,
     FormComponent,
-    CurrPipe
+    CurrPipe,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
