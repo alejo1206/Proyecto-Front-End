@@ -1,6 +1,6 @@
-[{"Hora Inicio":"08:00:00", "Hora Fin":"12:00:00"},
- {"Hora Inicio":"12:00:00", "Hora Fin":"16:00:00"},
- {"Hora Inicio":"16:00:00", "Hora Fin":"20:00:00"},
- {"Hora Inicio":"00:00:00", "Hora Fin":"04:00:00"},
- {"Hora Inicio":"04:00:00", "Hora Fin":"08:00:00"},
- {"Hora Inicio":"20:00:00", "Hora Fin":"23:59:00"}]
+[{"id":"1","Hora Inicio":"08:00:00", "Hora Fin":"12:00:00"},
+ {"id":"2","Hora Inicio":"12:00:00", "Hora Fin":"16:00:00"},
+ {"id":"3","Hora Inicio":"16:00:00", "Hora Fin":"20:00:00"},
+ {"id":"4","Hora Inicio":"00:00:00", "Hora Fin":"04:00:00"},
+ {"id":"5","Hora Inicio":"04:00:00", "Hora Fin":"08:00:00"},
+ {"id":"6","Hora Inicio":"20:00:00", "Hora Fin":"23:59:00"}]

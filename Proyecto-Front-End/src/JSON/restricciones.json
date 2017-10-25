@@ -1,4 +1,4 @@
-[{"Nombre":"Cel\u00edaco", "Descripción":"Apto para personas con celiaqu\u00eda"},
- {"Nombre":"Vegetariano", "Descripción":"Apto para vegetarianos (no para veganos)"},
- {"Nombre":"Hipertensos", "Descripción":"Bajo en sodio, apto para hipertensos"},
- {"Nombre":"Sin alcohol", "Descripción":"Bebida sin alcohol"}]
+[{"id":"1", "Nombre":"Cel\u00edaco", "Descripción":"Apto para personas con celiaqu\u00eda"},
+ {"id":"2", "Nombre":"Vegetariano", "Descripción":"Apto para vegetarianos (no para veganos)"},
+ {"id":"3", "Nombre":"Hipertensos", "Descripción":"Bajo en sodio, apto para hipertensos"},
+ {"id":"4", "Nombre":"Sin alcohol", "Descripción":"Bebida sin alcohol"}]
