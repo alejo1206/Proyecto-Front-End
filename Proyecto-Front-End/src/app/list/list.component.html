@@ -1,3 +1,4 @@
+<br>
 <div class="container-fluid">
     <table class="table table-sm table-striped table-bordered table-hover">
     <thead>
@@ -11,9 +12,11 @@
             <td *ngFor="let r of row; let i = index">
                 <span *ngIf="headers[i].type === 'currency'">{{r | currPipe}}</span>
                 <span *ngIf="headers[i].type === 'text' || r === '-'">{{r}}</span>
-                <span *ngIf="headers[i].type === 'list' && r !== '-'">
+                <span *ngIf="headers[i].type === 'list' && r.value !== '-'">
                     <ul>
-                        <li *ngFor="let val of r">{{val}}</li>
+                        <span *ngFor="let val of r">
+                            <li *ngIf="val.checked">{{val.value}}</li>
+                        </span>
                     </ul>
                 </span>
                 <!-- TODO: agregar desplegable para menu, secciones y ofertas-->

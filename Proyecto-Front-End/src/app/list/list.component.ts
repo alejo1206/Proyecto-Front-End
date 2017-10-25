@@ -26,7 +26,8 @@ export class ListComponent implements OnInit {
           switch(key){
             case "Precio": header.type = "currency"; break;
             case "Restricciones":
-            case "Descripción Restricción": header.type = "list"; break;
+            case "Secciones":
+            case "Artículos": header.type = "list"; break;
             default: header.type = "text"; break;
           }
           this.headers.push(header);
@@ -41,6 +42,7 @@ export class ListComponent implements OnInit {
         }
         this.rows.push(row);
       }
+      console.log(this.rows);
     });
   }
 }
