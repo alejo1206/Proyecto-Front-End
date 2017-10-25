@@ -15,13 +15,17 @@ export class ListComponent implements OnInit {
   constructor(private http: Http, private route: ActivatedRoute, private service: ListService) { }
   headers: Header[] = [];
   rows: string[][] = [];
+  private clase;
+  private id;
   
   ngOnInit() {
     this.route.params.subscribe((params) => {
-      if(params["id"] === undefined)
-        this.getAll(params["clase"]);
+      this.clase = params["clase"];
+      this.id = params["id"];
+      if(this.id === undefined)
+        this.getAll(this.clase);
       else
-        this.getOne(params["clase"], params["id"]);
+        this.getOne(this.clase, this.id);
     });
   }
 

@@ -1,5 +1,8 @@
 <br>
 <div class="container-fluid">
+    <a [routerLink]="['crear']" class="btn btn-success">Crear</a>
+    <br>
+    <br>
     <table class="table table-sm table-striped table-bordered table-hover">
     <thead>
         <tr>
@@ -19,12 +22,11 @@
                         </span>
                     </ul>
                 </span>
-                <!-- TODO: agregar desplegable para menu, secciones y ofertas-->
             </td>
             <td>
                 <!-- TODO: consultar como pasar la clase y el id para la ruta parametrizada (seguramente sea con ng model) -->
-                <a href="#" class="btn btn-info">Editar</a>
-                <a href="#" class="btn btn-danger">Borrar</a>
+                <a [routerLink]="[clase, '/editar', id]" class="btn btn-info">Editar</a>
+                <a routerLink="/:clase/eliminar/:id" class="btn btn-danger">Eliminar</a>
             </td>
         </tr>
     </tbody>
