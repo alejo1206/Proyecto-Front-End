@@ -20,7 +20,7 @@ export class ListComponent implements OnInit {
     this.http.get("/JSON/" + clase + ".json").subscribe(resp =>{
       this.data = resp.json();
       for (var key in this.data[0]) {
-        if(key !== "Habilitado"){
+        if(key !== "Habilitado" && key !== "id"){
           let header = new Header();
           header.value = key;
           switch(key){
@@ -36,7 +36,7 @@ export class ListComponent implements OnInit {
       for(var i = 0; i <= this.data.length - 1; i++){
         let row: string[] = [];
         for (var key in this.data[i]) {
-          if(key !== "Habilitado"){
+          if(key !== "Habilitado" && key !== "id"){
             this.data[i][key] === "" ? row.push("-") : row.push(this.data[i][key]);
           }
         }

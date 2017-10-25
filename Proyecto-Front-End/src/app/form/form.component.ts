@@ -73,12 +73,15 @@ export class FormComponent implements OnInit {
       case "DNI":
       case "Código de Seguridad": return "number";
       case "Email": return "email";
-      case "Restricciones": return "list";
+      case "Restricciones": 
+      case "Artículos": 
+      case "Secciones": return "list";
       case "Entrada":
       case "Salida": return "datetime";
       case "Hora Inicio":
       case "Hora Fin": return "time";
-      case "Fecha Baja": return "date";
+      case "Fecha Baja": 
+      case "Fecha Creación": return "date";
       case "Puesto": 
       case "Rol": return "enum";
       default: return "text";
