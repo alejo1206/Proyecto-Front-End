@@ -24,9 +24,8 @@
                 </span>
             </td>
             <td>
-                <!-- TODO: consultar como pasar la clase y el id para la ruta parametrizada (seguramente sea con ng model) -->
-                <a [routerLink]="[clase, '/editar', id]" class="btn btn-info">Editar</a>
-                <a routerLink="/:clase/eliminar/:id" class="btn btn-danger">Eliminar</a>
+                <a [routerLink]="['editar', ids[i]]" class="btn btn-info">Editar</a>
+                <a [routerLink]="['eliminar', ids[i]]" class="btn btn-danger">Eliminar</a>
             </td>
         </tr>
     </tbody>

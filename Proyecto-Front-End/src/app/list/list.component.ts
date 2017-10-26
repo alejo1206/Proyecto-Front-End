@@ -6,8 +6,7 @@ import { ListService } from '../list.service';
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss'],
-  providers: [ListService]
+  styleUrls: ['./list.component.scss']
 })
 
 export class ListComponent implements OnInit {
@@ -16,16 +15,16 @@ export class ListComponent implements OnInit {
   headers: Header[] = [];
   rows: string[][] = [];
   private clase;
-  private id;
+  private ids: string[] = [];
   
   ngOnInit() {
     this.route.params.subscribe((params) => {
       this.clase = params["clase"];
-      this.id = params["id"];
-      if(this.id === undefined)
+      //this.id = params["id"];
+      //if(this.id === undefined)
         this.getAll(this.clase);
-      else
-        this.getOne(this.clase, this.id);
+      //else
+      //  this.getOne(this.clase, this.id);
     });
   }
 
@@ -53,14 +52,18 @@ export class ListComponent implements OnInit {
           if(key !== "Habilitado" && key !== "id"){
             resp[i][key] === "" ? row.push("-") : row.push(resp[i][key]);
           }
+          else if(key === "id"){
+            this.ids.push(resp[i][key]);
+          }
         }
         this.rows.push(row);
       }
+      console.log(this.ids);
       sub.unsubscribe();
     });
   }
 
-  private getOne(clase: string, id: number): void{
+  /*private getOne(clase: string, id: number): void{
     let sub = this.service.getOne(clase, id).subscribe(resp =>{
       this.headers = [];
       this.rows = [];
@@ -87,7 +90,7 @@ export class ListComponent implements OnInit {
       this.rows.push(row);
       sub.unsubscribe();
     });
-  }
+  }*/
 
 }
 

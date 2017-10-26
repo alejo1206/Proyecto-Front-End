@@ -14,6 +14,7 @@ import { ListComponent } from './list/list.component';
 import { FormComponent } from './form/form.component';
 import { CurrPipe } from './curr.pipe';
 import { HomeComponent } from './home/home.component';
+import { ListService } from './list.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { HomeComponent } from './home/home.component';
     AppRoutingModule,
     HttpModule
   ],
-  providers: [],
+  providers: [ListService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
