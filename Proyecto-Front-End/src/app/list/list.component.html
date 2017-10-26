@@ -11,7 +11,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let row of rows">
+        <tr *ngFor="let row of rows; let ind = index">
             <td *ngFor="let r of row; let i = index">
                 <span *ngIf="headers[i].type === 'currency'">{{r | currPipe}}</span>
                 <span *ngIf="headers[i].type === 'text' || r === '-'">{{r}}</span>
@@ -24,8 +24,8 @@
                 </span>
             </td>
             <td>
-                <a [routerLink]="['editar', ids[i]]" class="btn btn-info">Editar</a>
-                <a [routerLink]="['eliminar', ids[i]]" class="btn btn-danger">Eliminar</a>
+                <a [routerLink]="['editar', ids[ind]]" class="btn btn-info">Editar</a>
+                <a [routerLink]="['eliminar', ids[ind]]" class="btn btn-danger">Eliminar</a>
             </td>
         </tr>
     </tbody>
