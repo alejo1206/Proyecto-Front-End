@@ -17,6 +17,7 @@ export class FormComponent implements OnInit {
   private clase;
   private accion;
   private id;
+  private newEntity: FormEntity = new FormEntity("", this.accion, this.id);;
 
   ngOnInit() {
     this.route.params.subscribe((params) =>{
@@ -37,4 +38,9 @@ export class FormComponent implements OnInit {
       sub.unsubscribe();
     });
   }
+
+    post(){
+      this.newEntity = new FormEntity("", this.accion, this.id);
+      console.log(this.newEntity);
+    }
 }
