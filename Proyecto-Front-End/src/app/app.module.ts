@@ -16,6 +16,7 @@ import { CurrPipe } from './curr.pipe';
 import { HomeComponent } from './home/home.component';
 import { ListService } from './list.service';
 import { FormService } from './form.service';
+import { RegisterFormComponent } from './register-form/register-form.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { FormService } from './form.service';
     ListComponent,
     FormComponent,
     CurrPipe,
-    HomeComponent
+    HomeComponent,
+    RegisterFormComponent
   ],
   imports: [
     BrowserModule,
