@@ -7,9 +7,8 @@ import { HomeComponent } from './home/home.component';
 const routes: Routes = [
   {path: "", component: HomeComponent},
   {path: ":clase", component: ListComponent},
-  {path: ":clase/crear", component: FormComponent},
-  {path: ":clase/editar/:id", component: FormComponent},
-  {path: ":clase/eliminar/:id", component: FormComponent}
+  {path: ":clase/:accion/:id", component: FormComponent},
+  {path: ":clase/:accion", component: FormComponent}
 ];
 
 @NgModule({

@@ -3,19 +3,19 @@
 <div class="container-fluid col-md-10">
     <div class="form-group">
         <fieldset id="fieldset">
-            <span *ngFor="let input of inputs">
+            <span *ngFor="let label of entity?.labels; let i = index">
                 <div class="form-group row">
-                    <label class="col-md-2 col-form-label" [for]="input.label">{{input.label}}:</label>
+                    <label class="col-md-2 col-form-label" [for]="label">{{label}}:</label>
                     <div class="col-md-6">
-                        <input class="form-control" type="text" [value]="input.value" [id]="input.label" *ngIf="input.type === 'text'">
-                        <input class="form-control" type="email" [value]="input.value" [id]="input.label" *ngIf="input.type === 'email'">
-                        <input class="form-control" type="datetime-local" [value]="input.value" [id]="input.label" *ngIf="input.type === 'datetime'">
-                        <input class="form-control" type="date" [value]="input.value" [id]="input.label" *ngIf="input.type === 'date'">
-                        <input class="form-control" type="time" [value]="input.value" [id]="input.label" *ngIf="input.type === 'time'">
-                        <input class="form-control" type="number" [value]="input.value" [id]="input.label" *ngIf="input.type === 'number'">
-                        <span *ngIf="input.type === 'list'">
+                        <input class="form-control" type="text" [value]="entity?.values[i]" [id]="label" *ngIf="entity?.types[i] === 'text'">
+                        <input class="form-control" type="email" [value]="entity?.values[i]" [id]="label" *ngIf="entity?.types[i] === 'email'">
+                        <input class="form-control" type="datetime-local" [value]="entity?.values[i]" [id]="label" *ngIf="entity?.types[i] === 'datetime'">
+                        <input class="form-control" type="date" [value]="entity?.values[i]" [id]="label" *ngIf="entity?.types[i] === 'date'">
+                        <input class="form-control" type="time" [value]="entity?.values[i]" [id]="label" *ngIf="entity?.types[i] === 'time'">
+                        <input class="form-control" type="number" [value]="entity?.values[i]" [id]="label" *ngIf="entity?.types[i] === 'number'">
+                        <span *ngIf="entity?.types[i] === 'list'">
                             <div class="form-check">
-                                <span *ngFor="let val of input.value">
+                                <span *ngFor="let val of entity?.values[i]">
                                     <label class="form-check-label">
                                         <input class="form-check-input" type="checkbox" [checked]="val.checked">{{val.value}}
                                     </label>
@@ -23,18 +23,18 @@
                                 </span>
                             </div>
                         </span>
-                        <span *ngIf="input.type === 'enum' && input.label === 'Puesto'">
-                            <select class="form-control" [id]="input.label">
-                                <option value="Mozo" [selected]="input.value === 'Mozo'">Mozo</option>
-                                <option value="Cocinero" [selected]="input.value === 'Cocinero'">Cocinero</option>
-                                <option value="Encargado" [selected]="input.value === 'Encargado'">Encargado</option>
+                        <span *ngIf="entity?.types[i] === 'enum' && label === 'Puesto'">
+                            <select class="form-control" [id]="label">
+                                <option value="Mozo" [selected]="entity?.values[i] === 'Mozo'">Mozo</option>
+                                <option value="Cocinero" [selected]="entity?.values[i] === 'Cocinero'">Cocinero</option>
+                                <option value="Encargado" [selected]="entity?.values[i] === 'Encargado'">Encargado</option>
                             </select>
                         </span>
-                        <span *ngIf="input.type === 'enum' && input.label === 'Rol'">
-                            <select class="form-control" [id]="input.label">
-                                <option value="Admin" [selected]="input.value === 'Admin'">Admin</option>
-                                <option value="Cliente" [selected]="input.value === 'Cliente'">Cliente</option>
-                                <option value="Empleado" [selected]="input.value === 'Empleado'">Empleado</option>
+                        <span *ngIf="entity?.types[i] === 'enum' && label === 'Rol'">
+                            <select class="form-control" [id]="label">
+                                <option value="Admin" [selected]="entity?.values[i] === 'Admin'">Admin</option>
+                                <option value="Cliente" [selected]="entity?.values[i] === 'Cliente'">Cliente</option>
+                                <option value="Empleado" [selected]="entity?.values[i] === 'Empleado'">Empleado</option>
                             </select>
                         </span>
                         <br>
