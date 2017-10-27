@@ -2,7 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { Http } from '@angular/http';
 import {ActivatedRoute} from "@angular/router";
 import { ListService } from '../list.service';
-import { Entity } from './entity';
+import { ListEntity } from './listEntity';
 
 @Component({
   selector: 'app-list',
@@ -13,7 +13,7 @@ import { Entity } from './entity';
 export class ListComponent implements OnInit {
 
   constructor(private http: Http, private route: ActivatedRoute, private service: ListService) { }
-  private entity: Entity;
+  private entity: ListEntity;
   private clase;
   
   ngOnInit() {
@@ -25,7 +25,7 @@ export class ListComponent implements OnInit {
 
   private getAll(clase: string): void{
     let sub = this.service.getAll(clase).subscribe(resp => {
-      let entidad = new Entity(resp);
+      let entidad = new ListEntity(resp);
       this.entity = entidad;
       sub.unsubscribe();
     });

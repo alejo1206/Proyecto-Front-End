@@ -1,4 +1,4 @@
-export class Entity {
+export class ListEntity {
     ids: string[] = [];
     headerValues: string[] = [];
     headerTypes: string[] = [];
