@@ -1,8 +1,8 @@
 export class ListEntity {
-    ids: string[] = [];
-    headerValues: string[] = [];
-    headerTypes: string[] = [];
-    rows: string[][] = [];
+    private ids: string[] = [];
+    private headerValues: string[] = [];
+    private headerTypes: string[] = [];
+    private rows: string[][] = [];
 
     constructor(data){
         for (var key in data[0]) {
