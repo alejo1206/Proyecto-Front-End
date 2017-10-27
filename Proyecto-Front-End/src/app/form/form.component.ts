@@ -35,8 +35,13 @@ export class FormComponent implements OnInit {
           if(key !== "id"){
             let input = new Input();
             input.label = key;
-            accion === "crear"? input.value = "" : input.value = this.entidad[key];
             input.type = this.setType(key);
+            if(accion === "crear" && input.type !== "list"){
+              input.value = "";
+            }
+            else{
+              input.value = this.entidad[key];
+            } 
             this.inputs.push(input);
           }
         }

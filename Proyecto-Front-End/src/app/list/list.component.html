@@ -6,16 +6,16 @@
     <table class="table table-sm table-striped table-bordered table-hover">
     <thead>
         <tr>
-            <th *ngFor="let head of headers">{{head.value}}</th>
+            <th *ngFor="let header of entity?.headerValues">{{header}}</th>
             <th>Acción</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let row of rows; let ind = index">
+        <tr *ngFor="let row of entity?.rows; let ind = index">
             <td *ngFor="let r of row; let i = index">
-                <span *ngIf="headers[i].type === 'currency'">{{r | currPipe}}</span>
-                <span *ngIf="headers[i].type === 'text' || r === '-'">{{r}}</span>
-                <span *ngIf="headers[i].type === 'list' && r.value !== '-'">
+                <span *ngIf="entity?.headerTypes[i] === 'currency'">{{r | currPipe}}</span>
+                <span *ngIf="entity?.headerTypes[i] === 'text' || r === '-'">{{r}}</span>
+                <span *ngIf="entity?.headerTypes[i] === 'list' && r.value !== '-'">
                     <ul>
                         <span *ngFor="let val of r">
                             <li *ngIf="val.checked">{{val.value}}</li>
@@ -24,8 +24,8 @@
                 </span>
             </td>
             <td>
-                <a [routerLink]="['editar', ids[ind]]" class="btn btn-info">Editar</a>
-                <a [routerLink]="['eliminar', ids[ind]]" class="btn btn-danger">Eliminar</a>
+                <a [routerLink]="['editar', entity?.ids[ind]]" class="btn btn-info">Editar</a>
+                <a [routerLink]="['eliminar', entity?.ids[ind]]" class="btn btn-danger">Eliminar</a>
             </td>
         </tr>
     </tbody>
