@@ -3,25 +3,45 @@
     <div class="form-group">
       <div class="form-group row">
         <label class="control-label col-sm-2" for="nombre">Nombre:</label>
-        <input class="form-control col-sm-3" type="text" id="nombre" formControlName="firstname">
+        <input class="form-control col-sm-4" type="text" id="nombre" formControlName="firstname">
+        <span class="alert alert-danger" *ngIf="rForm.get('firstname').errors?.required && rForm.get('firstname').touched">Debe completar este campo</span>
+        <span class="alert alert-danger" *ngIf="rForm.get('firstname').errors?.minlength && rForm.get('firstname').touched">Este campo debe tener al menos 3 caracteres de longitud</span>
+      </div>
+      <div class="form-group row">
         <label class="control-label col-sm-2" for="apellido">Apellido:</label>
-        <input class="form-control col-sm-3" type="text" id="apellido" formControlName="lastname">
+        <input class="form-control col-sm-4" type="text" id="apellido" formControlName="lastname">
+        <span class="alert alert-danger" *ngIf="rForm.get('lastname').errors?.required && rForm.get('lastname').touched">Debe completar este campo</span>
+        <span class="alert alert-danger" *ngIf="rForm.get('lastname').errors?.minlength && rForm.get('lastname').touched">Este campo debe tener al menos 3 caracteres de longitud</span>
       </div>
       <div class="form-group row">
         <label class="control-label col-sm-2" for="email">Email:</label>
-        <input class="form-control col-sm-3" type="email" id="email" formControlName="email">
+        <input class="form-control col-sm-4" type="email" id="email" formControlName="email">
+        <span class="alert alert-danger" *ngIf="rForm.get('email').errors?.required && rForm.get('email').touched">Debe completar este campo</span>
+        <span class="alert alert-danger" *ngIf="rForm.get('email').errors?.email && rForm.get('email').touched">El email ingresado no es válido</span>
+      </div>
+      <div class="form-group row">
         <label class="control-label col-sm-2" for="usuario">Usuario:</label>
-        <input class="form-control col-sm-3" type="text" id="usuario" formControlName="username">
+        <input class="form-control col-sm-4" type="text" id="usuario" formControlName="username">
+        <span class="alert alert-danger" *ngIf="rForm.get('username').errors?.required && rForm.get('username').touched">Debe completar este campo</span>
+        <span class="alert alert-danger" *ngIf="rForm.get('username').errors?.minlength && rForm.get('username').touched">Este campo debe tener al menos 3 caracteres de longitud</span>
       </div>
       <div class="form-group row">
         <label class="control-label col-sm-2" for="contraseña">Contraseña:</label>
-        <input class="form-control col-sm-3" type="password" id="contraseña" formControlName="password">
+        <input class="form-control col-sm-4" type="password" id="contraseña" formControlName="password">
+        <span class="alert alert-danger" *ngIf="rForm.get('password').errors?.required && rForm.get('password').touched">Debe completar este campo</span>
+        <span class="alert alert-danger" *ngIf="rForm.get('password').errors?.pattern && rForm.get('password').touched">La contraseña debe tener al menos una letra y un número, y 8 caracteres mín.</span>
+      </div>
+      <div class="form-group row">
         <label class="control-label col-sm-2" for="confContraseña">Confirmar contraseña:</label>
-        <input class="form-control col-sm-3" type="password" id="confContraseña" formControlName="confPassword">
+        <input class="form-control col-sm-4" type="password" id="confContraseña" formControlName="confPassword">
+        <span class="alert alert-danger" *ngIf="rForm.get('confPassword').errors?.required && rForm.get('confPassword').touched">Debe completar este campo</span>
+        <span class="alert alert-danger" *ngIf="rForm.get('confPassword').errors?.pattern && rForm.get('confPassword').touched">La contraseña debe tener al menos una letra y un número, y 8 caracteres mín.</span>
+        <span class="alert alert-danger" *ngIf="rForm.errors?.matchPassword && rForm.get('confPassword').touched && rForm.get('password').touched">Las contraseñas ingresadas no coinciden</span>        
       </div>
       <div class="form-check">
         <label for="acepto" class="form-check-label">
           <input type="checkbox" id="acepto" formControlName="check"> Acepto los términos y condiciones
+          <span class="alert alert-danger" *ngIf="rForm.get('confPassword').errors?.requiredTrue && rForm.get('confPassword').touched">Debe aceptar los términos y condiciones para registrarse</span>
         </label>
       </div>
       <br>
@@ -29,5 +49,6 @@
     </div>
   </form>
   <p>Form value: {{ rForm.value | json }}</p>
+  <p>Name value: {{ rForm.get("firstname").value }}</p>
   <p>Form status: {{ rForm.status | json }}</p>
 </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { PasswordValidator } from './password-validator';
 
 @Component({
   selector: 'app-register-form',
@@ -14,8 +15,7 @@ export class RegisterFormComponent implements OnInit {
     this.createForm();
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   createForm(){
     this.rForm = this.fb.group({
@@ -37,13 +37,15 @@ export class RegisterFormComponent implements OnInit {
       ]],
       password: [null, [
         Validators.required,
-        Validators.minLength(3),
+        Validators.pattern("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d^a-zA-Z0-9].{7,50}$")
       ]],
       confPassword: [null, [
         Validators.required,
-        Validators.minLength(3)
+        Validators.pattern("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d^a-zA-Z0-9].{7,50}$")
       ]],
-      check: [null, Validators.requiredTrue],
+      check: [false, Validators.requiredTrue],
+    }, {
+      validator: PasswordValidator.MatchPasswords
     });
   }
 
