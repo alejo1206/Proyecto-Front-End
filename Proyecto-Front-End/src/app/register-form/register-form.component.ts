@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PasswordValidator } from './password-validator';
+import { ListService } from '../list.service';
+import { FormService } from '../form.service';
 
 @Component({
   selector: 'app-register-form',
@@ -11,11 +13,15 @@ export class RegisterFormComponent implements OnInit {
 
   rForm: FormGroup;
 
-  constructor(private fb: FormBuilder) { 
+  constructor(private fb: FormBuilder, private listService: ListService, private formService: FormService) { 
     this.createForm();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.listService.getLast("usuarios").subscribe(data => {
+      console.log(data);
+    })
+  }
 
   createForm(){
     this.rForm = this.fb.group({
@@ -47,6 +53,10 @@ export class RegisterFormComponent implements OnInit {
     }, {
       validator: PasswordValidator.MatchPasswords
     });
+  }
+
+  submit(){
+    
   }
 
 }

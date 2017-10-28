@@ -1,5 +1,5 @@
 <div class="container-fluid col-md-11">
-  <form [formGroup]="rForm" novalidate>
+  <form [formGroup]="rForm" (ngSubmit)="submit()" novalidate>
     <div class="form-group">
       <div class="form-group row">
         <label class="control-label col-sm-2" for="nombre">Nombre:</label>
@@ -45,10 +45,7 @@
         </label>
       </div>
       <br>
-      <button type="submit" class="btn btn-success">Registrarme</button>
+      <button type="submit" class="btn btn-success" [disabled]="rForm.status === 'INVALID'">Registrarme</button>
     </div>
   </form>
-  <p>Form value: {{ rForm.value | json }}</p>
-  <p>Name value: {{ rForm.get("firstname").value }}</p>
-  <p>Form status: {{ rForm.status | json }}</p>
 </div>
