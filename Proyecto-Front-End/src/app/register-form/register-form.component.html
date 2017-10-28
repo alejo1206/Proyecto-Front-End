@@ -1,25 +1,33 @@
 <div class="container-fluid col-md-11">
-  <form>
+  <form [formGroup]="rForm" novalidate>
     <div class="form-group">
       <div class="form-group row">
         <label class="control-label col-sm-2" for="nombre">Nombre:</label>
-        <input class="form-control col-sm-3" type="text" id="nombre">
+        <input class="form-control col-sm-3" type="text" id="nombre" formControlName="firstname">
         <label class="control-label col-sm-2" for="apellido">Apellido:</label>
-        <input class="form-control col-sm-3" type="text" id="apellido">
+        <input class="form-control col-sm-3" type="text" id="apellido" formControlName="lastname">
       </div>
       <div class="form-group row">
         <label class="control-label col-sm-2" for="email">Email:</label>
-        <input class="form-control col-sm-3" type="email" id="email">
+        <input class="form-control col-sm-3" type="email" id="email" formControlName="email">
         <label class="control-label col-sm-2" for="usuario">Usuario:</label>
-        <input class="form-control col-sm-3" type="text" id="usuario">
+        <input class="form-control col-sm-3" type="text" id="usuario" formControlName="username">
       </div>
       <div class="form-group row">
         <label class="control-label col-sm-2" for="contraseña">Contraseña:</label>
-        <input class="form-control col-sm-3" type="password" id="contraseña">
+        <input class="form-control col-sm-3" type="password" id="contraseña" formControlName="password">
         <label class="control-label col-sm-2" for="confContraseña">Confirmar contraseña:</label>
-        <input class="form-control col-sm-3" type="password" id="confContraseña">
+        <input class="form-control col-sm-3" type="password" id="confContraseña" formControlName="confPassword">
       </div>
+      <div class="form-check">
+        <label for="acepto" class="form-check-label">
+          <input type="checkbox" id="acepto" formControlName="check"> Acepto los términos y condiciones
+        </label>
+      </div>
+      <br>
       <button type="submit" class="btn btn-success">Registrarme</button>
     </div>
   </form>
+  <p>Form value: {{ rForm.value | json }}</p>
+  <p>Form status: {{ rForm.status | json }}</p>
 </div>
