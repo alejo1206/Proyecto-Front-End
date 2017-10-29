@@ -6,12 +6,14 @@
         <input class="form-control col-sm-4" type="text" id="nombre" formControlName="firstname">
         <span class="alert alert-danger" *ngIf="rForm.get('firstname').errors?.required && rForm.get('firstname').touched">Debe completar este campo</span>
         <span class="alert alert-danger" *ngIf="rForm.get('firstname').errors?.minlength && rForm.get('firstname').touched">Este campo debe tener al menos 3 caracteres de longitud</span>
+        <span class="alert alert-danger" *ngIf="rForm.get('firstname').errors?.pattern && rForm.get('firstname').touched">Este campo no acepta números</span>
       </div>
       <div class="form-group row">
         <label class="control-label col-sm-2" for="apellido">Apellido:</label>
         <input class="form-control col-sm-4" type="text" id="apellido" formControlName="lastname">
         <span class="alert alert-danger" *ngIf="rForm.get('lastname').errors?.required && rForm.get('lastname').touched">Debe completar este campo</span>
         <span class="alert alert-danger" *ngIf="rForm.get('lastname').errors?.minlength && rForm.get('lastname').touched">Este campo debe tener al menos 3 caracteres de longitud</span>
+        <span class="alert alert-danger" *ngIf="rForm.get('lastname').errors?.pattern && rForm.get('lastname').touched">Este campo no acepta números</span>
       </div>
       <div class="form-group row">
         <label class="control-label col-sm-2" for="email">Email:</label>

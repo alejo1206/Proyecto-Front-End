@@ -19,15 +19,85 @@ export class InputService {
 
   toFormGroup(inputs: InputBase<any>[] ) {
     let group: any = {};
-
     inputs.forEach(input => {
-      group[input.key] = input.required ? new FormControl(input.value || '', Validators.required)
-                                              : new FormControl(input.value || '');
+      switch(input.key){
+        case "Nombre":
+        case "Apellido":{
+          group[input.key] = new FormControl(input.value === "" ? null : input.value, [
+            Validators.required,
+            Validators.minLength(3),
+            Validators.pattern("[a-zA-Z][a-zA-Z ]+")
+          ]);
+          break;
+        }
+        case "Descripción":
+        case "Usuario":{
+          group[input.key] = new FormControl(input.value === "" ? null : input.value, [
+            Validators.required,
+            Validators.minLength(3)
+          ]);
+          break;
+        }
+        case "Teléfono":{
+          group[input.key] = new FormControl(input.value === "" ? null : input.value, [
+            Validators.required,
+            Validators.pattern("[0-9]{7,13}") 
+          ]);
+          break;
+        }
+        case "DNI":{
+          group[input.key] = new FormControl(input.value === "" ? null : input.value, [
+            Validators.required,
+            Validators.pattern("[0-9]{8}") 
+          ]);
+          break;
+        }
+        case "Email":{
+          group[input.key] = new FormControl(input.value === "" ? null : input.value, [
+            Validators.required,
+            Validators.email
+          ]);
+          break;
+        }
+        case "Precio":
+        case "Calorías":
+        case "Tiempo de Preparación":
+        case "Rol":
+        case "Fecha Entrada":
+        case "Hora Entrada":
+        case "Hora Incio":{
+          group[input.key] = new FormControl(input.value === "" ? null : input.value, Validators.required);
+          break;
+        } 
+        case "Fecha Salida":
+        case "Hora Salida":
+        case "Hora Fin":{
+          group[input.key] = new FormControl(input.value === "" ? null : input.value, Validators.required);
+          //TODO: validar que salida sea mayor a entrada
+          break;
+        }
+        case "Contraseña":{
+          group[input.key] = new FormControl(input.value === "" ? null : input.value, [
+            Validators.required,
+            Validators.pattern("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d^a-zA-Z0-9].{7,50}$")
+          ]);
+          break;
+        }
+        case "Código de Seguridad":{
+          group[input.key] = new FormControl(input.value === "" ? null : input.value, Validators.pattern("[0-9]{6}"));
+          break;
+        }
+        default:{
+          group[input.key] = new FormControl(input.value === "" ? null : input.value);
+          break;
+        }
+      }
     });
+    console.log(group);
     return new FormGroup(group);
   }
 
-  getInputs(clase: string, id: string): Observable<any>{
+  getInputs(clase: string, id: string): Observable<InputBase<any>[]>{
     let inputs: InputBase<any>[] = [];
     
     return this.http.get("/JSON/" + clase + ".json").map(data => data.json())
@@ -42,14 +112,18 @@ export class InputService {
       .map(data =>{
         let i = 1;
         for (var key in data) {
+          if(key === "id")
+            continue;
           switch(this.setType(key)){
             case "textbox": {
               let input = new TextboxInput({
                 key: key,
                 label: key,
                 value: id === "0" ? null : data[key],
-                order: i
+                order: i,
               });
+              if(key === "Contraseña")
+                input.type = "password";
               inputs.push(input);
               break;
             }
@@ -122,49 +196,11 @@ export class InputService {
               break;
             }
           }
+          i++;
         }
       
         return inputs.sort((a, b) => a.order - b.order);      
       });
-           /*new DropdownInput({
-             key: 'brave',
-             label: 'Bravery Rating',
-             options: [
-               {key: 'solid',  value: 'Solid'},
-               {key: 'great',  value: 'Great'},
-               {key: 'good',   value: 'Good'},
-               {key: 'unproven', value: 'Unproven'}
-             ],
-             order: 3
-           }),
-
-           new CheckboxInput({
-            key: 'checkbox',
-            label: 'Check',
-            options: [
-              {value: 'Solid', checked: false},
-              {value: 'Great', checked: true},
-              {value: 'Good', checked: false},
-              {value: 'Unproven', checked: false}
-            ],
-            order: 4
-          }),
-      
-           new TextboxInput({
-             key: 'firstName',
-             label: 'First name',
-             value: 'Bombasto',
-             required: true,
-             order: 1
-           }),
-      
-           new TextboxInput({
-             key: 'emailAddress',
-             label: 'Email',
-             type: 'email',
-             order: 2
-           })
-         ];*/
 
   }
 
@@ -180,7 +216,8 @@ export class InputService {
       case "Calorías":
       case "Tiempo Preparación":
       case "DNI":
-      case "Código de Seguridad": return "number";
+      case "Código de Seguridad":
+      case "Teléfono": return "number";
       case "Restricciones": 
       case "Artículos": 
       case "Secciones": return "checkbox";

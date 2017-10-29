@@ -23,11 +23,13 @@ export class RegisterFormComponent implements OnInit {
     this.rForm = this.fb.group({
       firstname: [null, [
         Validators.required,
-        Validators.minLength(3)
+        Validators.minLength(3),
+        Validators.pattern("[a-zA-Z][a-zA-Z ]+")
       ]],
       lastname: [null, [
         Validators.required,
-        Validators.minLength(3)
+        Validators.minLength(3),
+        Validators.pattern("[a-zA-Z][a-zA-Z ]+")
       ]],
       email: [null, [
         Validators.required, 

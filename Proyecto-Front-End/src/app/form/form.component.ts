@@ -3,6 +3,9 @@ import { Http } from '@angular/http';
 import { FormService } from '../form.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormEntity } from './form-entity';
+import { InputBase } from '../input-base';
+import { FormGroup } from '@angular/forms';
+import { InputService } from '../input.service';
 
 @Component({
   selector: 'app-form',
@@ -11,36 +14,35 @@ import { FormEntity } from './form-entity';
 })
 export class FormComponent implements OnInit {
 
-  constructor(private http: Http, private service: FormService, private route: ActivatedRoute) { }
+  inputs: InputBase<any>[] = [];
+  form: FormGroup;
+  clase;
+  accion;
+  id;
 
-  private entity: FormEntity;
-  private clase;
-  private accion;
-  private id;
-  private newEntity: FormEntity = new FormEntity("", this.accion, this.id);;
+  constructor(private service: InputService, private route: ActivatedRoute) {
+    
+  }
 
   ngOnInit() {
     this.route.params.subscribe((params) =>{
       this.clase = params["clase"];
       this.accion = params["accion"];
       params["id"] === undefined ? this.id = "0" : this.id = params["id"];
-      this.getOne(this.clase, this.id);
+      this.setForm(this.clase, this.id);
+    });
+
+  }
+
+  setForm(clase, id){
+    this.service.getInputs(clase, id).subscribe((data) => {
+      this.inputs = data;
+      this.form = this.service.toFormGroup(this.inputs);
     });
   }
 
-  getOne(clase, id):void{
-    if(this.accion === "eliminar"){
-      (<HTMLInputElement> document.getElementById("fieldset")).disabled = true;
-    }
-    let sub = this.service.getOne(clase, id).subscribe(resp => {
-      let entidad = new FormEntity(resp, this.accion, this.id);
-      this.entity = entidad;
-      sub.unsubscribe();
-    });
+  onSubmit(){
+    console.log(JSON.stringify(this.form.value));
   }
 
-    post(){
-      this.newEntity = new FormEntity("", this.accion, this.id);
-      console.log(this.newEntity);
-    }
 }

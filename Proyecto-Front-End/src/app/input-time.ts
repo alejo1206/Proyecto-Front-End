@@ -2,10 +2,9 @@ import { InputBase } from "./input-base";
 
 export class TimeInput extends InputBase<string> {
   controlType = 'time';
-  type: string;
+  type = "time";
 
   constructor(options: {} = {}) {
     super(options);
-    this.type = options['type'] || '';
   }
 }

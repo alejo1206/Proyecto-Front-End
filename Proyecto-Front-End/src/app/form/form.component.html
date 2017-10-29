@@ -1,53 +1,46 @@
-<!-- TODO: agregar submit, control con reactive y servicio para reflejar los cambios-->
 <br>
-<div class="container-fluid col-md-10">
-    <form (submit)="post()">
-        <div class="form-group" *ngIf="entity">
+<div class="container-fluid col-md-11">
+    <div class="form-group">
+    <form (ngSubmit)="onSubmit()" [formGroup]="form" *ngIf="form !== undefined">
             <fieldset id="fieldset">
-                <span *ngFor="let label of entity?.labels; let i = index">
-                    <div class="form-group row">
-                        <label class="col-md-2 col-form-label" [for]="label">{{label}}:</label>
-                        <div class="col-md-6">
-                            <input class="form-control" type="text" [value]="entity.values[i]" [id]="label" *ngIf="entity?.types[i] === 'text'">
-                            <input class="form-control" type="email" [value]="entity.values[i]" [id]="label" *ngIf="entity?.types[i] === 'email'">
-                            <input class="form-control" type="datetime-local" [value]="entity.values[i]" [id]="label" *ngIf="entity?.types[i] === 'datetime'">
-                            <input class="form-control" type="date" [value]="entity.values[i]" [id]="label" *ngIf="entity?.types[i] === 'date'">
-                            <input class="form-control" type="time" [value]="entity.values[i]" [id]="label" *ngIf="entity?.types[i] === 'time'">
-                            <input class="form-control" type="number" [value]="entity.values[i]" [id]="label" *ngIf="entity?.types[i] === 'number'">
-                            <span *ngIf="entity.types[i] === 'list'">
-                                <div class="form-check">
-                                    <span *ngFor="let val of entity.values[i]">
-                                        <label class="form-check-label">
-                                            <input class="form-check-input" type="checkbox" [checked]="val.checked">{{val.value}}
-                                        </label>
-                                        <br>
+                <div *ngFor="let input of inputs" class="form-group-row">
+                    <div [formGroup]="form">
+                        <div class="form-group row">
+                            <label [attr.for]="input.key" class="col-2 col-form-label">{{input.label}}:</label>
+                            <div [ngSwitch]="input.controlType" class="col-4">
+                                <select class="form-control" [id]="input.key" *ngSwitchCase="'dropdown'" [formControlName]="input.key">
+                                    <option *ngFor="let opt of input.options" [value]="opt.key">{{opt.value}}</option>
+                                </select>
+                                <div class="form-check" [id]="input.key" *ngSwitchCase="'checkbox'">
+                                    <span *ngFor="let opt of input.options">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" [type]="input.type" [checked]="opt.checked" [formControlName]="input.key">{{opt.value}}
+                                    </label>
+                                    <br>
                                     </span>
                                 </div>
-                            </span>
-                            <span *ngIf="entity.types[i] === 'enum' && label === 'Puesto'">
-                                <select class="form-control" [id]="label">
-                                    <option value="Mozo" [selected]="entity.values[i] === 'Mozo'">Mozo</option>
-                                    <option value="Cocinero" [selected]="entity.values[i] === 'Cocinero'">Cocinero</option>
-                                    <option value="Encargado" [selected]="entity.values[i] === 'Encargado'">Encargado</option>
-                                </select>
-                            </span>
-                            <span *ngIf="entity.types[i] === 'enum' && label === 'Rol'">
-                                <select class="form-control" [id]="label">
-                                    <option value="Admin" [selected]="entity.values[i] === 'Admin'">Admin</option>
-                                    <option value="Cliente" [selected]="entity.values[i] === 'Cliente'">Cliente</option>
-                                    <option value="Empleado" [selected]="entity.values[i] === 'Empleado'">Empleado</option>
-                                </select>
-                            </span>
-                            <br>
-                        </div>
+                                <input class="form-control" *ngSwitchDefault [formControlName]="input.key" [id]="input.key" [type]="input.type">
+                                </div> 
+                                <div class="alert alert-danger" *ngIf="form.get(input.key).errors?.required && form.get(input.key).touched">Este campo no puede estar vacío</div>
+                                <span class="alert alert-danger" *ngIf="form.get(input.key).errors?.minlength && form.get(input.key).touched">Este campo debe tener al menos 3 caracteres de longitud</span>
+                                <span class="alert alert-danger" *ngIf="form.get(input.key).errors?.pattern && form.get(input.key).touched && (input.key === 'Nombre' || input.key === 'Apellido')">Este campo no acepta números</span>
+                                <span class="alert alert-danger" *ngIf="form.get(input.key).errors?.email && form.get(input.key).touched && !form.get(input.key).pristine">El email ingresado no es válido</span>
+                                <span class="alert alert-danger" *ngIf="form.get(input.key).errors?.pattern && form.get(input.key).touched && input.key === 'Contraseña'">La contraseña debe tener al menos una letra y un número, y 8 caracteres mín.</span>
+                                <span class="alert alert-danger" *ngIf="form.get(input.key).errors?.pattern && form.get(input.key).touched && input.key === 'DNI'">Este campo debe ser un número de 8 dígitos</span>
+                                <span class="alert alert-danger" *ngIf="form.get(input.key).errors?.pattern && form.get(input.key).touched && input.key === 'Teléfono'">Este campo debe ser un número de 7 a 13 dígitos, sin guiones ni espacios</span>
+                                <span class="alert alert-danger" *ngIf="form.get(input.key).errors?.pattern && form.get(input.key).touched && input.key === 'Código de Seguridad'">Este campo debe ser un número de 6 dígitos</span>
+                            </div>
                     </div>
-                </span>
-                <button type="submit" class="btn btn-success" *ngIf="accion === 'crear'">Crear {{clase}}</button>
-                <button type="submit" class="btn btn-primary" *ngIf="accion === 'editar'">Guardar cambios</button>
-                <button type="submit" class="btn btn-danger" *ngIf="accion === 'eliminar'">Eliminar</button>
-                <a [routerLink]="['/', clase]"><button class="btn btn-secondary">Cancelar</button></a>
+                </div>
+                <div class="form-row">
+                    <button type="submit" class="btn btn-success" *ngIf="accion === 'crear'" [disabled]="!form?.valid">Crear {{clase}}</button>
+                    <button type="submit" class="btn btn-primary" *ngIf="accion === 'editar'" [disabled]="!form?.valid">Guardar cambios</button>
+                    <button type="submit" class="btn btn-danger" *ngIf="accion === 'eliminar'" [disabled]="!form?.valid">Eliminar</button>
+                    &nbsp;
+                    <a [routerLink]="['/', clase]"><button class="btn btn-secondary">Cancelar</button></a>
+                </div>
             </fieldset>
-        </div>
-    </form>
+        </form>
+    </div>
 </div>
      
