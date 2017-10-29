@@ -18,6 +18,8 @@ import { HomeComponent } from './home/home.component';
 import { ListService } from './list.service';
 import { FormService } from './form.service';
 import { RegisterFormComponent } from './register-form/register-form.component';
+import { DynamicFormInputComponent } from './dynamic-form-input/dynamic-form-input.component';
+import { InputService } from './input.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { RegisterFormComponent } from './register-form/register-form.component';
     FormComponent,
     CurrPipe,
     HomeComponent,
-    RegisterFormComponent
+    RegisterFormComponent,
+    DynamicFormInputComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +43,7 @@ import { RegisterFormComponent } from './register-form/register-form.component';
     HttpModule,
     ReactiveFormsModule
   ],
-  providers: [ListService, FormService],
+  providers: [ListService, FormService, InputService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -61,10 +61,12 @@ export class FormEntity {
       case "Restricciones": 
       case "Artículos": 
       case "Secciones": return "list";
-      case "Entrada":
-      case "Salida": return "datetime";
+      case "Hora Entrada":
+      case "Hora Salida":
       case "Hora Inicio":
       case "Hora Fin": return "time";
+      case "Fecha Entrada":
+      case "Fecha Salida":
       case "Fecha Baja": 
       case "Fecha Creación": return "date";
       case "Puesto": 
