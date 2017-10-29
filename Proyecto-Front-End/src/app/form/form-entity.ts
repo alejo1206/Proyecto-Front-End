@@ -20,6 +20,30 @@ export class FormEntity {
       }
     }
   }
+
+  getLabels(): string[]{
+    return this.labels;
+  }
+
+  setLabels(labels: string[]): void{
+    this.labels = labels;
+  }
+
+  getValues(): string[]{
+    return this.values;
+  }
+
+  setValues(values: string[]): void{
+    this.values = values;
+  }
+
+  getTypes(): string[]{
+    return this.types;
+  }
+
+  setTypes(types: string[]): void{
+    this.types = types;
+  }
   
   setType(key: string): string{
     switch(key){

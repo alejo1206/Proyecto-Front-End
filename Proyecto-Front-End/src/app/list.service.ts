@@ -12,10 +12,5 @@ export class ListService {
   getAll(clase: string): Observable<ListEntity[]>{
     return this.http.get("/JSON/" + clase + ".json").map(data => data.json());
   }
-
-  getLast(clase: string): Observable<ListEntity>{
-    return this.http.get("/JSON/" + clase + ".json").map(data => data.json()).map((data) => {
-      return data.find(x => x.id === data[data.length - 1].id);
-    });
-  }
+  
 }

@@ -18,4 +18,21 @@ export class FormService {
     });
   }
 
+  getLast(clase: string): Observable<FormEntity>{
+    return this.http.get("/JSON/" + clase + ".json").map(data => data.json()).map((data) => {
+      return data.find(x => x.id === data[data.length - 1].id);
+    });
+  }
+
+  add(entidad: FormEntity, clase: string):void {
+    let labels = entidad.getLabels();
+    let values = entidad.getValues();
+    var obj = "{";
+    for (var key in labels) {
+      obj += "\"" + labels[key] + "\":\"" + values[key] + "\", ";
+    }
+    obj = obj.slice(0, -2);
+    obj += "}";
+    console.log(obj);
+  }
 }
