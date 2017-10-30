@@ -35,7 +35,9 @@ export class FormComponent implements OnInit {
          this.accion !== "editar" && this.accion !== "eliminar") || isNaN(this.id)){
         this.router.navigate(["error"]);
       }
-      this.setForm(this.clase, this.id);
+      else{
+        this.setForm(this.clase, this.id);
+      }
     });
 
   }

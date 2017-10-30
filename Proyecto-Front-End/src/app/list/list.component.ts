@@ -20,10 +20,12 @@ export class ListComponent implements OnInit {
     if(this.route.params["clase"] !== "articulos" && this.route.params["clase"] !== "jornadas" && this.route.params["clase"] !== "menus" && this.route.params["clase"] !== "repartidores" && this.route.params["clase"] !== "restricciones" && this.route.params["clase"] !== "secciones" && this.route.params["clase"] !== "turnos" && this.route.params["clase"] !== "usuarios"){
         this.router.navigate(["error"]);
     }
+    else{
     this.route.params.subscribe((params) => {
       this.clase = params["clase"];
       this.getAll(this.clase);
-    });
+    })
+  };
   }
 
   private getAll(clase: string): void{
