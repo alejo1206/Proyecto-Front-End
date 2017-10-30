@@ -19,6 +19,7 @@ import { ListService } from './list.service';
 import { FormService } from './form.service';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { InputService } from './input.service';
+import { LoginFormComponent } from './login-form/login-form.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { InputService } from './input.service';
     FormComponent,
     CurrPipe,
     HomeComponent,
-    RegisterFormComponent
+    RegisterFormComponent,
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,

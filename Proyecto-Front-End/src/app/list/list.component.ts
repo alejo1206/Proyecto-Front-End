@@ -17,16 +17,15 @@ export class ListComponent implements OnInit {
   private clase;
   
   ngOnInit() {
-    if(this.route.params["clase"] !== "articulos" && this.route.params["clase"] !== "jornadas" && this.route.params["clase"] !== "menus" && this.route.params["clase"] !== "repartidores" && this.route.params["clase"] !== "restricciones" && this.route.params["clase"] !== "secciones" && this.route.params["clase"] !== "turnos" && this.route.params["clase"] !== "usuarios"){
-        this.router.navigate(["error"]);
-    }
-    else{
     this.route.params.subscribe((params) => {
       this.clase = params["clase"];
-      this.getAll(this.clase);
-    })
+      if(this.clase !== "articulos" && this.clase !== "jornadas" && this.clase !== "menus" && this.clase !== "repartidores" && this.clase !== "restricciones" && this.clase !== "secciones" && this.clase !== "turnos" && this.clase !== "usuarios"){
+        this.router.navigate(["error"]);
+      }
+      else{
+        this.getAll(this.clase);
+      }})
   };
-  }
 
   private getAll(clase: string): void{
     let sub = this.service.getAll(clase).subscribe(resp => {

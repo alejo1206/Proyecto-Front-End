@@ -9,20 +9,20 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-            <a class="nav-item nav-link" routerLink="/articulos">Articulos</a>
-            <a class="nav-item nav-link" routerLink="/jornadas">Jornadas</a>
-            <a class="nav-item nav-link" routerLink="/menus">Men&uacute;s</a>
-            <a class="nav-item nav-link" routerLink="/repartidores">Repartidores</a>
-            <a class="nav-item nav-link" routerLink="/restricciones">Restricciones</a>
-            <a class="nav-item nav-link" routerLink="/secciones">Secciones</a>
-            <a class="nav-item nav-link" routerLink="/turnos">Turnos</a>
-            <a class="nav-item nav-link" routerLink="/usuarios">Usuarios</a>
+            <a class="nav-item nav-link" routerLink="/listado/articulos">Articulos</a>
+            <a class="nav-item nav-link" routerLink="/listado/jornadas">Jornadas</a>
+            <a class="nav-item nav-link" routerLink="/listado/menus">Men&uacute;s</a>
+            <a class="nav-item nav-link" routerLink="/listado/repartidores">Repartidores</a>
+            <a class="nav-item nav-link" routerLink="/listado/restricciones">Restricciones</a>
+            <a class="nav-item nav-link" routerLink="/listado/secciones">Secciones</a>
+            <a class="nav-item nav-link" routerLink="/listado/turnos">Turnos</a>
+            <a class="nav-item nav-link" routerLink="/listado/usuarios">Usuarios</a>
         </div>
-        <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
-            <li>
-                <span class="text-muted"><strong>{{Usuario}}</strong></span>&nbsp;
-                <a href="#"><button class="btn btn-info">Salir</button></a>
-            </li>
-        </ul>
+        <div class="ml-auto">
+            <span class="text-muted" *ngIf="false"><strong>{{usuario.nombre}} {{usuario.apellido}}</strong></span>&nbsp;
+            <a routerLink="login"><button type="submit" class="btn btn-info" *ngIf="true">Ingresar</button></a>&nbsp;
+            <a routerLink="register"><button type="submit" class="btn btn-success" *ngIf="true">Registrarme</button></a>&nbsp;
+            <button type="submit" class="btn btn-secondary" *ngIf="false">Salir</button>
+        </div>
     </div>
 </nav>

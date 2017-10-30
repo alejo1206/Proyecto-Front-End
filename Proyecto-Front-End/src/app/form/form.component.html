@@ -37,7 +37,7 @@
                     <button type="submit" class="btn btn-primary" *ngIf="accion === 'editar'" [disabled]="!form?.valid">Guardar cambios</button>
                     <button type="submit" class="btn btn-danger" *ngIf="accion === 'eliminar'" [disabled]="!form?.valid">Eliminar</button>
                     &nbsp;
-                    <a [routerLink]="['/', clase]"><button class="btn btn-secondary">Cancelar</button></a>
+                    <a [routerLink]="['/listado/', clase]"><button class="btn btn-secondary">Cancelar</button></a>
                 </div>
             </fieldset>
         </form>
