@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { FormService } from '../form.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormEntity } from './form-entity';
 import { InputBase } from '../input-base';
 import { FormGroup } from '@angular/forms';
@@ -20,7 +20,7 @@ export class FormComponent implements OnInit {
   accion;
   id;
 
-  constructor(private service: InputService, private route: ActivatedRoute) {
+  constructor(private service: InputService, private route: ActivatedRoute, private router: Router) {
     
   }
 
@@ -29,6 +29,12 @@ export class FormComponent implements OnInit {
       this.clase = params["clase"];
       this.accion = params["accion"];
       params["id"] === undefined ? this.id = "0" : this.id = params["id"];
+      if((this.clase !== "articulos" && this.clase !== "jornadas" && this.clase !== "menus" && 
+         this.clase !== "repartidores" && this.clase !== "restricciones" && this.clase !== "secciones" && 
+         this.clase !== "turnos" && this.clase !== "usuarios") || (this.accion !== "crear" && 
+         this.accion !== "editar" && this.accion !== "eliminar") || isNaN(this.id)){
+        this.router.navigate(["error"]);
+      }
       this.setForm(this.clase, this.id);
     });
 

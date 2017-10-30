@@ -93,7 +93,6 @@ export class InputService {
         }
       }
     });
-    console.log(group);
     return new FormGroup(group);
   }
 
