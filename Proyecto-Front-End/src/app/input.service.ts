@@ -65,13 +65,13 @@ export class InputService {
         case "Rol":
         case "Fecha Entrada":
         case "Hora Entrada":
-        case "Hora Incio":{
+        case "Hora Incio":
+        case "Hora Fin":{
           group[input.key] = new FormControl(input.value === "" ? null : input.value, Validators.required);
           break;
         } 
         case "Fecha Salida":
-        case "Hora Salida":
-        case "Hora Fin":{
+        case "Hora Salida":{
           group[input.key] = new FormControl(input.value === "" ? null : input.value, Validators.required);
           //TODO: validar que salida sea mayor a entrada
           break;

@@ -49,7 +49,7 @@ export class FormComponent implements OnInit {
     });
   }
 
-  onSubmit(){
+  onSubmit(){    
     console.log(JSON.stringify(this.form.value));
   }
 
