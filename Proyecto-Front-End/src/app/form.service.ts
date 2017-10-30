@@ -24,10 +24,8 @@ export class FormService {
     });
   }
 
-  getLast(clase: string): Observable<FormEntity>{
-    return this.http.get("/JSON/" + clase + ".json").map(data => data.json()).map((data) => {
-      return data.find(x => x.id === data[data.length - 1].id);
-    });
+  getAll(clase: string): Observable<FormEntity[]>{
+    return this.http.get("/JSON/" + clase + ".json").map(data => data.json());
   }
 
   add(entidad: FormEntity, clase: string):void {

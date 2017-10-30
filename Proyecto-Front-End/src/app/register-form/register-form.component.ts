@@ -14,6 +14,8 @@ export class RegisterFormComponent implements OnInit {
 
   rForm: FormGroup;
   user: string;
+  usernameExists: boolean = false;
+  emailExists: boolean = false;
 
   constructor(private fb: FormBuilder, private service: FormService, private router: Router) { 
     this.createForm();
@@ -56,28 +58,41 @@ export class RegisterFormComponent implements OnInit {
   }
 
   submit(){
-    this.service.getLast("usuarios").subscribe(data => {
-      let newUser: FormEntity = new FormEntity("", "crear", Number.parseInt(data["id"]) + 1);
-      let labels: string[] = [];
-      let values: string[] = [];
-      for (var key in data) {
-        labels.push(key);
+    this.emailExists = false;
+    this.usernameExists = false;
+    this.service.getAll("usuarios").subscribe(data => {
+      for(var i = 0; i <= data.length - 1; i++){
+        if(this.rForm.controls["username"].value === data[i]["Usuario"]){
+          this.usernameExists = true;
+        }
+        else if(this.rForm.controls["email"].value === data[i]["Email"]){
+          this.emailExists = true;
+        }
       }
-      values.push((Number.parseInt(data["id"]) + 1).toString());
-      values.push(this.rForm.controls["username"].value);
-      values.push(this.rForm.controls["password"].value);
-      values.push(this.rForm.controls["firstname"].value);
-      values.push(this.rForm.controls["lastname"].value);
-      values.push(this.rForm.controls["email"].value);
-      values.push("Cliente");
-      values.push("");
-      values.push("");
-      values.push("");
-      newUser.setLabels(labels);
-      newUser.setValues(values);
-      this.service.add(newUser, "usuarios");
-      this.user = data["Apellido"] + ", " + data["Nombre"];
-      this.router.navigate([""]);
+      if(!this.usernameExists && !this.emailExists){
+        let lastId = Number.parseInt(data[data.length - 1 ]["id"]);
+        let newUser: FormEntity = new FormEntity("", "crear", lastId + 1);
+        let labels: string[] = [];
+        let values: string[] = [];
+        for (var key in data[0]) {
+          labels.push(key);
+        }
+        values.push((lastId + 1).toString());
+        values.push(this.rForm.controls["username"].value);
+        values.push(this.rForm.controls["password"].value);
+        values.push(this.rForm.controls["firstname"].value);
+        values.push(this.rForm.controls["lastname"].value);
+        values.push(this.rForm.controls["email"].value);
+        values.push("Cliente");
+        values.push("");
+        values.push("");
+        values.push("");
+        newUser.setLabels(labels);
+        newUser.setValues(values);
+        this.service.add(newUser, "usuarios");
+        this.user = this.rForm.controls["lastname"].value + ", " + this.rForm.controls["firstname"].value;
+        this.router.navigate([""]);
+      }
     });
   }
 
