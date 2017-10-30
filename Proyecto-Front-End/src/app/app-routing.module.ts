@@ -8,13 +8,13 @@ import { RegisterFormComponent } from './register-form/register-form.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 
 const routes: Routes = [
-  {path: "", component: HomeComponent},{path: "error", component: ErrorComponent},
+  {path: "", component: HomeComponent},
+  {path: "error", component: ErrorComponent},
   {path: "listado/:clase", component: ListComponent},
   {path: "listado/:clase/:accion/:id", component: FormComponent},
   {path: "listado/:clase/:accion", component: FormComponent},
   {path: "login", component: LoginFormComponent},
   {path: "register", component: RegisterFormComponent},
-  
   {path: "**", component: ErrorComponent},
 ];
 
