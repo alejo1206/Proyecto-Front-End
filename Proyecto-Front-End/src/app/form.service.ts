@@ -9,12 +9,18 @@ export class FormService {
 
   constructor(private http: Http) { }
 
-  getOne(clase: string, id: string): Observable<FormEntity[]>{
+  getOne(clase: string, id: string): Observable<FormEntity>{
     if(id === "0"){
       id = "1";
     }
     return this.http.get("/JSON/" + clase + ".json").map(res => res.json()).map((data) => {
       return data.find(x => x.id === id);
+    });
+  }
+
+  getUser(username: string, password: string): Observable<FormEntity>{
+    return this.http.get("/JSON/usuarios.json").map(res => res.json()).map((data) => {
+      return data.find(x => x.Usuario === username && x.Contraseña === password);
     });
   }
 

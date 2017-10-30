@@ -3,6 +3,7 @@ import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { PasswordValidator } from './password-validator';
 import { FormService } from '../form.service';
 import { FormEntity } from '../form/form-entity';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-form',
@@ -12,8 +13,9 @@ import { FormEntity } from '../form/form-entity';
 export class RegisterFormComponent implements OnInit {
 
   rForm: FormGroup;
+  user: string;
 
-  constructor(private fb: FormBuilder, private service: FormService) { 
+  constructor(private fb: FormBuilder, private service: FormService, private router: Router) { 
     this.createForm();
   }
 
@@ -74,6 +76,8 @@ export class RegisterFormComponent implements OnInit {
       newUser.setLabels(labels);
       newUser.setValues(values);
       this.service.add(newUser, "usuarios");
+      this.user = data["Apellido"] + ", " + data["Nombre"];
+      this.router.navigate([""]);
     });
   }
 
