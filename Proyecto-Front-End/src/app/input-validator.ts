@@ -6,7 +6,7 @@ export class InputValidator{
         let fechaSalida = controls.get("Fecha Salida");
         let horaEntrada = controls.get("Hora Entrada");
         let horaSalida = controls.get("Hora Salida");
-        if(fechaEntrada !== undefined && fechaSalida !== undefined && horaEntrada !== undefined && horaSalida !== undefined){
+        if(fechaEntrada !== undefined && fechaSalida !== undefined && horaEntrada !== undefined && horaSalida !== undefined && fechaEntrada !== null && fechaSalida !== null && horaEntrada !== null && horaSalida !== null){
             let entrada: number = Date.parse(fechaEntrada.value);
             let salida: number = Date.parse(fechaSalida.value);
             if(salida < entrada){
