@@ -11,7 +11,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let row of entity.rows; let ind = index">
+        <tr *ngFor="let row of entity.rows | paginate: { itemsPerPage: 5, currentPage: p}; let ind = index">
             <td *ngFor="let r of row; let i = index">
                 <span *ngIf="entity.headerTypes[i] === 'currency'">{{r | currPipe}}</span>
                 <span *ngIf="entity.headerTypes[i] === 'text' || r === '-'">{{r}}</span>
@@ -30,4 +30,5 @@
         </tr>
     </tbody>
     </table>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>

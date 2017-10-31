@@ -21,6 +21,7 @@ import { RegisterFormComponent } from './register-form/register-form.component';
 import { InputService } from './input.service';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { UserService } from './user.service';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { UserService } from './user.service';
     FormsModule,
     AppRoutingModule,
     HttpModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ],
   providers: [ListService, FormService, InputService, UserService],
   bootstrap: [AppComponent]
