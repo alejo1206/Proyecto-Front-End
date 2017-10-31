@@ -1,5 +1,5 @@
 import { Injectable }   from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 import { InputBase } from './input-base';
 import { DropdownInput } from './input-dropdown';
@@ -10,6 +10,7 @@ import { Observable } from 'rxjs/Observable';
 import { NumberInput } from './input-number';
 import { DateInput } from './input-date';
 import { TimeInput } from './input-time';
+import { InputValidator } from './input-validator';
 
 
 @Injectable()
@@ -93,7 +94,8 @@ export class InputService {
         }
       }
     });
-    return new FormGroup(group);
+    let fb = new FormBuilder();
+    return fb.group(group, {validator: InputValidator.ValidateGreater})
   }
 
   getInputs(clase: string, id: string): Observable<InputBase<any>[]>{
