@@ -3,6 +3,8 @@ import { Http } from '@angular/http';
 import {ActivatedRoute, Router} from "@angular/router";
 import { ListService } from '../list.service';
 import { ListEntity } from './listEntity';
+import { UserService } from '../user.service';
+import { User } from '../user';
 
 @Component({
   selector: 'app-list',
@@ -12,9 +14,10 @@ import { ListEntity } from './listEntity';
 
 export class ListComponent implements OnInit {
 
-  constructor(private http: Http, private route: ActivatedRoute, private service: ListService, private router: Router) { }
+  constructor(private http: Http, private route: ActivatedRoute, private service: ListService, private router: Router, private us: UserService) { }
   private entity: ListEntity;
   private clase;
+  private user: User;
   
   ngOnInit() {
     this.route.params.subscribe((params) => {
@@ -24,6 +27,9 @@ export class ListComponent implements OnInit {
       }
       else{
         this.getAll(this.clase);
+        this.us.user.subscribe(data => {
+          this.user = data;
+        });
       }})
   };
 

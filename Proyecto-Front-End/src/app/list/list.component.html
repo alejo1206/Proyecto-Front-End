@@ -1,6 +1,6 @@
 <br>
 <div class="container-fluid" *ngIf="entity">
-    <a [routerLink]="['crear']" class="btn btn-success">Crear</a>
+    <a [routerLink]="['crear']"><button class="btn btn-success" [disabled]="user?.rol !== 'Admin'">Crear</button></a>
     <br>
     <br>
     <table class="table table-sm table-striped table-bordered table-hover">
@@ -24,8 +24,8 @@
                 </span>
             </td>
             <td>
-                <a [routerLink]="['editar', entity.ids[ind]]" class="btn btn-info">Editar</a>
-                <a [routerLink]="['eliminar', entity.ids[ind]]" class="btn btn-danger">Eliminar</a>
+                <a [routerLink]="['editar', entity.ids[ind]]"><button class="btn btn-info" [disabled]="user?.rol !== 'Admin'">Editar</button></a>
+                <a [routerLink]="['eliminar', entity.ids[ind]]"><button class="btn btn-danger" [disabled]="user?.rol !== 'Admin'">Eliminar</button></a>
             </td>
         </tr>
     </tbody>

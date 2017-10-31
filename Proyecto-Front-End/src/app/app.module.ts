@@ -20,6 +20,7 @@ import { FormService } from './form.service';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { InputService } from './input.service';
 import { LoginFormComponent } from './login-form/login-form.component';
+import { UserService } from './user.service';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,7 @@ import { LoginFormComponent } from './login-form/login-form.component';
     HttpModule,
     ReactiveFormsModule
   ],
-  providers: [ListService, FormService, InputService],
+  providers: [ListService, FormService, InputService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

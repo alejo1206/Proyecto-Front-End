@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" *ngIf="user">
     <div class="navbar-header">
         <a class="navbar-brand" routerLink="">
             <img src="/assets/brand.png" alt="brand" width="50" height="50">
@@ -19,8 +19,8 @@
             <a class="nav-item nav-link" routerLink="/listado/usuarios">Usuarios</a>
         </div>
         <div class="ml-auto">
-            <span class="text-muted"><strong>{{user}}</strong></span>&nbsp;
-            <button class="btn btn-secondary" *ngIf="user" (click)="logout()">Salir</button>
+            <span class="text-muted"><strong>{{user.apellido}}, {{user.nombre}}</strong></span>&nbsp;
+            <button class="btn btn-secondary" (click)="logout()">Salir</button>
         </div>
     </div>
 </nav>

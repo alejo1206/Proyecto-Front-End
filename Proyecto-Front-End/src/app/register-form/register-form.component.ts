@@ -4,6 +4,8 @@ import { PasswordValidator } from './password-validator';
 import { FormService } from '../form.service';
 import { FormEntity } from '../form/form-entity';
 import { Router } from '@angular/router';
+import { User } from '../user';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-register-form',
@@ -13,11 +15,11 @@ import { Router } from '@angular/router';
 export class RegisterFormComponent implements OnInit {
 
   rForm: FormGroup;
-  user: string;
+  user: User;
   usernameExists: boolean = false;
   emailExists: boolean = false;
 
-  constructor(private fb: FormBuilder, private service: FormService, private router: Router) { 
+  constructor(private fb: FormBuilder, private service: FormService, private router: Router, private us: UserService) { 
     this.createForm();
   }
 
@@ -89,8 +91,8 @@ export class RegisterFormComponent implements OnInit {
         values.push("");
         newUser.setLabels(labels);
         newUser.setValues(values);
-        this.service.add(newUser, "usuarios");
-        this.user = this.rForm.controls["lastname"].value + ", " + this.rForm.controls["firstname"].value;
+        this.user = new User(this.rForm.controls["firstname"].value, this.rForm.controls["lastname"].value, "Cliente");
+        this.us.setUser(this.user);
         this.router.navigate([""]);
       }
     });

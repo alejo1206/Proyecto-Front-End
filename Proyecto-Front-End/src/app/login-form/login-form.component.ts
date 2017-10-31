@@ -2,6 +2,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { FormService } from '../form.service';
 import { Router } from '@angular/router';
+import { UserService } from '../user.service';
+import { User } from '../user';
 
 @Component({
   selector: 'app-login-form',
@@ -12,10 +14,9 @@ export class LoginFormComponent implements OnInit {
 
   rForm: FormGroup;
   userExists: boolean = true;
-  user: string;
-  @Output() output: EventEmitter<string> = new EventEmitter<string>();
+  user: User;
 
-  constructor(private fb: FormBuilder, private service: FormService, private router: Router) {
+  constructor(private fb: FormBuilder, private service: FormService, private router: Router, private us: UserService) {
     this.createForm();
    }
 
@@ -35,8 +36,8 @@ export class LoginFormComponent implements OnInit {
         this.userExists = false;
       }
       else{
-        this.user = data["Apellido"] + ", " + data["Nombre"];
-        this.output.emit(this.user);
+        this.user = new User(data["Nombre"], data["Apellido"], data["Rol"]);
+        this.us.setUser(this.user);
         this.router.navigate([""]);
       } 
     });
