@@ -6,6 +6,8 @@ import { FormEntity } from './form-entity';
 import { InputBase } from '../input-base';
 import { FormGroup } from '@angular/forms';
 import { InputService } from '../input.service';
+import { UserService } from '../user.service';
+import { User } from '../user';
 
 @Component({
   selector: 'app-form',
@@ -19,8 +21,9 @@ export class FormComponent implements OnInit {
   clase;
   accion;
   id;
+  user: User;
 
-  constructor(private service: InputService, private route: ActivatedRoute, private router: Router) {
+  constructor(private service: InputService, private route: ActivatedRoute, private router: Router, private us: UserService) {
     
   }
 
@@ -36,7 +39,14 @@ export class FormComponent implements OnInit {
         this.router.navigate(["error"]);
       }
       else{
-        this.setForm(this.clase, this.id);
+        this.us.user.subscribe(data => this.user = data);
+        if(this.user !== undefined && this.user.rol === "Admin"){
+          this.setForm(this.clase, this.id);
+        }
+        else
+        {
+          this.router.navigate(["error"]);
+        }
       }
     });
 

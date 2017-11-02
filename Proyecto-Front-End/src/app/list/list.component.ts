@@ -26,10 +26,8 @@ export class ListComponent implements OnInit {
         this.router.navigate(["error"]);
       }
       else{
-        this.getAll(this.clase);
-        this.us.user.subscribe(data => {
-          this.user = data;
-        });
+        this.us.user.subscribe(data => this.user = data);
+        this.user ? this.getAll(this.clase) : this.router.navigate(["error"]);
       }})
   };
 
