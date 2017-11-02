@@ -29,6 +29,8 @@
                                 <span class="alert alert-danger" *ngIf="form.get(input.key).errors?.pattern && form.get(input.key).touched && input.key === 'DNI'">Este campo debe ser un número de 8 dígitos</span>
                                 <span class="alert alert-danger" *ngIf="form.get(input.key).errors?.pattern && form.get(input.key).touched && input.key === 'Teléfono'">Este campo debe ser un número de 7 a 13 dígitos, sin guiones ni espacios</span>
                                 <span class="alert alert-danger" *ngIf="form.get(input.key).errors?.pattern && form.get(input.key).touched && input.key === 'Código de Seguridad'">Este campo debe ser un número de 6 dígitos</span>
+                                <span class="alert alert-danger" *ngIf="form.errors?.fechaEntrada && form.get(input.key).touched && input.key === 'Fecha Salida'">Esta fecha no puede ser menor a la fecha de entrada</span>
+                                <span class="alert alert-danger" *ngIf="form.errors?.horaEntrada && form.get(input.key).touched && input.key === 'Hora Salida'">Esta hora no puede ser menor a la hora de entrada para un mismo día</span>
                             </div>
                     </div>
                 </div>
